@@ -60,14 +60,14 @@ def edit():
     print('\r\n[i] Masukan data baru')
     print('[i] Tekan `enter` jika tidak ingin mengubah data tersebut')
 
-    nama   = input('> Nama (opsional): ').title()
+    nama   = input('> Nama (opsional) : ').title()
     no     = _input_no()
     alamat = input('> Alamat (opsional)\t: ')
 
-    bk.edit(pilihan, nama, no, alamat)
+    teredit = bk.edit(pilihan, nama, no, alamat)
 
     print('\r\n[✓] Kontak berhasil diubah')
-    # tampilkan(bk.head)
+    print(f'\r\n{teredit.nama}, {teredit.no}, {teredit.alamat}')
 
 # deprecated
 def cari_nama():

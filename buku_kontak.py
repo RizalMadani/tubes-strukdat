@@ -84,6 +84,8 @@ class BukuKontak:
             temp.no = no
         if alamat != '':
             temp.alamat = alamat
+
+        return temp
         
         
         
