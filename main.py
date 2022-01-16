@@ -1,3 +1,4 @@
+import re
 from buku_kontak import BukuKontak
 
 bk    = BukuKontak()
@@ -133,7 +134,9 @@ def _input_no():
     while(True):
         no = input('> No. Telp (opsional)\t: ')
 
-        if no.isnumeric():
+        # Cek jika no yang diinput hanya mengandung:
+        # tanda + - ( ) spasi dan karakter digit
+        if re.search('^(\+(\(\d+\))*)?[\d -]{9,}[\d]$', no):
             return no
         else:
             print('\r\n[!] No. Telp tidak valid')
