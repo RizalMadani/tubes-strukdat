@@ -19,8 +19,8 @@ def display_menu():
     print()
 
 def buat_kontak():
-    nama   = input('> Nama : ')
-    no     = input('> No. Telp (opsional)\t: ')
+    nama   = input('> Nama : ').title()
+    no     = _input_no()
     alamat = input('> Alamat (opsional)\t: ')
 
     bk.insert(nama, no, alamat)
@@ -56,6 +56,20 @@ def cari(atribut):
 
     print(f'\r\nHasil Pencarian Kontak dengan {label} "{dicari}"')
     tampilkan(result)
+
+def _input_no():
+    """
+    Input dan validasi No. Telp
+    """
+
+    while(True):
+        no = input('> No. Telp (opsional)\t: ')
+
+        if no.isnumeric():
+            return no
+        else:
+            print('\r\n[!] No. Telp tidak valid')
+
 
 if __name__ == '__main__':
     bk.insert('Bebas', '08', 'Di sina')
