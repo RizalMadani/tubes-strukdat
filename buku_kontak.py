@@ -72,9 +72,9 @@ class BukuKontak:
         Return kontak yang telah diedit
         """
 
-        temp   = self.head
+        temp = self.head
+        i    = 0
 
-        i = 0
         while i < indeks-1:
             temp = temp.next
 
@@ -86,11 +86,21 @@ class BukuKontak:
             temp.alamat = alamat
 
         return temp
-        
-        
-        
+    
+    def hapus(self, indeks):
+        """
+        Hapus kontak berdasarkan indeks/urutan dalam daftar
+        """
 
+        temp = self.head
 
-    # def display(self):
-    #     if self.head is None:
-    #         return ['Belum ada kontak dalam buku']
+        if indeks == 1:
+            self.head = temp.next
+            temp = None
+            return
+
+        i = 0
+        while i < indeks-2:
+            temp = temp.next
+        
+        temp.next = temp.next.next

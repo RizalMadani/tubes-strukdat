@@ -20,6 +20,7 @@ def display_menu():
     print('0. Exit')
     print()
 
+
 def buat_kontak():
     nama   = input('> Nama : ').title()
     no     = _input_no()
@@ -28,6 +29,7 @@ def buat_kontak():
     bk.insert(nama, no, alamat)
 
     print('\r\n[✓] Kontak berhasil ditambahkan')
+
 
 def tampilkan(kontak):
     if kontak is None:
@@ -40,6 +42,7 @@ def tampilkan(kontak):
 
         kontak = kontak.next
         i += 1
+
 
 def edit():
     print()
@@ -69,6 +72,39 @@ def edit():
     print('\r\n[✓] Kontak berhasil diubah')
     print(f'\r\n{teredit.nama}, {teredit.no}, {teredit.alamat}')
 
+
+def hapus():
+    print()
+    tampilkan(bk.head)
+
+    while(True):
+        try:
+            pilihan = int(input('> Pilih kontak yang ingin di hapus: '))
+
+            if pilihan > 0 and pilihan <= bk.size:
+                break
+            else:
+                print('\r\n[!] Pilihan melebihi batas')
+
+        except ValueError:
+            print('\r\n[!] Pilihan tidak valid')
+
+    while(True):
+        konfirmasi = input('> Apakah Anda yakin ingin menghapus kontak ini? [y/n] : ')
+        konfirmasi.lower()
+
+        if konfirmasi == 'y':
+            break
+        elif konfirmasi == 'n':
+            print('[!] Dibatalkan')
+            return
+        else:
+            print('\r\n[!] Pilihan tidak valid')
+    
+    bk.hapus(pilihan)
+
+    print('\r\n[✓] Kontak berhasil dihapus')
+
 # deprecated
 def cari_nama():
     nama_dicari = input('> Nama yang ingin dicari: ')
@@ -78,6 +114,7 @@ def cari_nama():
     print(f'\r\nHasil Pencarian Kontak dengan Nama "{nama_dicari}"')
     tampilkan(result)
 
+
 def cari(atribut):
     label  = LABEL[atribut]
     dicari = input(f'> {label} yang ingin dicari: ').lower()
@@ -86,6 +123,7 @@ def cari(atribut):
 
     print(f'\r\nHasil Pencarian Kontak dengan {label} "{dicari}"')
     tampilkan(result)
+
 
 def _input_no():
     """
@@ -104,6 +142,7 @@ def _input_no():
 if __name__ == '__main__':
     bk.insert('Bebas', '08', 'Di sina')
     bk.insert('Lebah', '09', 'Di situ')
+    bk.insert('Jade', '10', 'Di mana')
 
     while(True):
         display_menu()
@@ -124,8 +163,8 @@ if __name__ == '__main__':
                 cari('no')
             elif pilihan == 6:
                 cari('alamat')
-            # elif pilihan == 7:
-            #     cari('nama')
+            elif pilihan == 7:
+                hapus()
             elif pilihan == 0:
                 break
             else:
