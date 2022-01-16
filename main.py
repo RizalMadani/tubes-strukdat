@@ -1,13 +1,20 @@
 from buku_kontak import BukuKontak
 
-bk = BukuKontak()
+bk    = BukuKontak()
+LABEL = {
+    'nama'   : 'Nama',
+    'no'     : 'No. Telepon',
+    'alamat' : 'Alamat'
+}
 
 
 def display_menu():
     print()
-    print('1. Masukan kontak baru')
-    print('2. Tampilkan daftar kontak')
-    print('3. Cari kontak berdasarkan nama')
+    print('1. Masukan Kontak Baru')
+    print('2. Tampilkan Daftar Kontak')
+    print('3. Cari Nama')
+    print('4. Cari No. Telepon')
+    print('5. Cari Alamat')
     print('0. Exit')
     print()
 
@@ -20,7 +27,7 @@ def buat_kontak():
 
     print('\r\n[✓] Kontak berhasil ditambahkan')
 
-def tampil_kontak(kontak):
+def tampilkan(kontak):
     if kontak is None:
         print('[!] Tidak ada kontak')
         return
@@ -32,28 +39,23 @@ def tampil_kontak(kontak):
         kontak = kontak.next
         i += 1
 
-# def tampil_kontak():
-#     if bk.head is None:
-#         print('\r\n[!] Belum ada kontak dalam buku')
-#         return
-
-#     print('\r\nDAFTAR KONTAK')
-
-#     temp = bk.head
-#     i    = 1
-#     while temp is not None:
-#         print(f'{i}. {temp.nama}, {temp.no}, {temp.alamat}')
-
-#         temp = temp.next
-#         i += 1
-
+# deprecated
 def cari_nama():
     nama_dicari = input('> Nama yang ingin dicari: ')
 
-    result = bk.find_by_nama(nama_dicari)
+    result = bk.find('nama', nama_dicari)
 
     print(f'\r\nHasil Pencarian Kontak dengan Nama "{nama_dicari}"')
-    tampil_kontak(result)
+    tampilkan(result)
+
+def cari(atribut):
+    label  = LABEL[atribut]
+    dicari = input(f'> {label} yang ingin dicari: ')
+
+    result = bk.find(atribut, dicari)
+
+    print(f'\r\nHasil Pencarian Kontak dengan {label} "{dicari}"')
+    tampilkan(result)
 
 if __name__ == '__main__':
     bk.insert('Bebas', '08', 'Di sina')
@@ -69,14 +71,18 @@ if __name__ == '__main__':
                 buat_kontak()
             elif pilihan == 2:
                 print('\r\n~~~Daftar Kontak~~~')
-                tampil_kontak(bk.head)
+                tampilkan(bk.head)
             elif pilihan == 3:
-                cari_nama()
+                cari('nama')
+            elif pilihan == 4:
+                cari('no')
+            elif pilihan == 5:
+                cari('alamat')
             elif pilihan == 0:
                 break
             else:
-                break
-        except:
+                print('[!] Pilihan tidak ada di menu')
+        except ValueError:
             print('\r\n[!] Pilihan tidak valid')
 
     exit()

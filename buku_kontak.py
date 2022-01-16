@@ -24,6 +24,7 @@ class BukuKontak:
 
         self.size += 1
 
+    # deprecated
     def find_by_nama(self, nama_dicari):
         """
         Cari kontak berdasarkan nama
@@ -34,6 +35,27 @@ class BukuKontak:
 
         while temp is not None:
             if temp.nama.find(nama_dicari) != -1:
+                if result is None:
+                    result = temp
+                else:
+                    result.next = temp
+
+            temp = temp.next
+
+        return result
+
+    def find(self, atribut, yang_dicari):
+        """
+        Cari kontak berdasarkan data yang dicari.
+
+        Pencarian tidak harus menggunakan kata yang lengkap
+        """
+
+        temp   = self.head
+        result = None
+
+        while temp is not None:
+            if getattr(temp, atribut).find(yang_dicari) != -1:
                 if result is None:
                     result = temp
                 else:
