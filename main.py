@@ -50,7 +50,7 @@ def cari_nama():
 
 def cari(atribut):
     label  = LABEL[atribut]
-    dicari = input(f'> {label} yang ingin dicari: ')
+    dicari = input(f'> {label} yang ingin dicari: ').lower()
 
     result = bk.find(atribut, dicari)
 
@@ -83,7 +83,7 @@ if __name__ == '__main__':
             else:
                 print('[!] Pilihan tidak ada di menu')
         except ValueError:
-            print('\r\n[!] Pilihan tidak valid')
+            print('[!] Pilihan tidak valid')
 
     exit()
         

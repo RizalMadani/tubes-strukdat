@@ -55,7 +55,7 @@ class BukuKontak:
         result = None
 
         while temp is not None:
-            if getattr(temp, atribut).find(yang_dicari) != -1:
+            if getattr(temp, atribut).lower().find(yang_dicari) != -1:
                 if result is None:
                     result = temp
                 else:
