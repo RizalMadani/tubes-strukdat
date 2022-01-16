@@ -12,9 +12,11 @@ def display_menu():
     print()
     print('1. Masukan Kontak Baru')
     print('2. Tampilkan Daftar Kontak')
-    print('3. Cari Nama')
-    print('4. Cari No. Telepon')
-    print('5. Cari Alamat')
+    print('3. Update Kontak')
+    print('4. Cari Nama')
+    print('5. Cari No. Telepon')
+    print('6. Cari Alamat')
+    print('7. Hapus Kontak')
     print('0. Exit')
     print()
 
@@ -38,6 +40,34 @@ def tampilkan(kontak):
 
         kontak = kontak.next
         i += 1
+
+def edit():
+    print()
+    tampilkan(bk.head)
+
+    while(True):
+        try:
+            pilihan = int(input('> Pilih kontak yang ingin di edit: '))
+
+            if pilihan > 0 and pilihan <= bk.size:
+                break
+            else:
+                print('\r\n[!] Pilihan melebihi batas')
+
+        except ValueError:
+            print('\r\n[!] Pilihan tidak valid')
+
+    print('\r\n[i] Masukan data baru')
+    print('[i] Tekan `enter` jika tidak ingin mengubah data tersebut')
+
+    nama   = input('> Nama (opsional): ').title()
+    no     = _input_no()
+    alamat = input('> Alamat (opsional)\t: ')
+
+    bk.edit(pilihan, nama, no, alamat)
+
+    print('\r\n[✓] Kontak berhasil diubah')
+    # tampilkan(bk.head)
 
 # deprecated
 def cari_nama():
@@ -87,11 +117,15 @@ if __name__ == '__main__':
                 print('\r\n~~~Daftar Kontak~~~')
                 tampilkan(bk.head)
             elif pilihan == 3:
-                cari('nama')
+                edit()
             elif pilihan == 4:
-                cari('no')
+                cari('nama')
             elif pilihan == 5:
+                cari('no')
+            elif pilihan == 6:
                 cari('alamat')
+            # elif pilihan == 7:
+            #     cari('nama')
             elif pilihan == 0:
                 break
             else:

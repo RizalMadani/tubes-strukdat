@@ -65,6 +65,30 @@ class BukuKontak:
 
         return result
 
+    def edit(self, indeks, nama='', no='', alamat=''):
+        """
+        Edit kontak berdasarkan indeks/urutan dalam daftar.
+
+        Return kontak yang telah diedit
+        """
+
+        temp   = self.head
+
+        i = 0
+        while i < indeks-1:
+            temp = temp.next
+
+        if nama != '':
+            temp.nama = nama
+        if no != '':
+            temp.no = no
+        if alamat != '':
+            temp.alamat = alamat
+        
+        
+        
+
+
     # def display(self):
     #     if self.head is None:
     #         return ['Belum ada kontak dalam buku']
