@@ -58,7 +58,7 @@ def tampilkan(kontak, is_numbering=False):
         alamat = kontak[i].alamat if kontak[i].alamat else '[Tidak ada alamat]'
 
         if is_numbering:
-            print(f'{i}. ', sep='')
+            print(f'{i+1}', sep='. ')
 
         print(f'{kontak[i].nama}, {no}, {alamat}')
 
@@ -134,7 +134,7 @@ def cari(atribut):
 
     result = bk.find(atribut, dicari)
 
-    print(f'\r\n[i]Hasil Pencarian Kontak dengan {label} "{dicari}"\r\n')
+    print(f'\r\n[i] Hasil Pencarian Kontak dengan {label} "{dicari}"\r\n')
     tampilkan(result)
 
 
@@ -156,7 +156,7 @@ def _input_no():
 
 if __name__ == '__main__':
     bk.insert('Amanda Amethyst', '0812344321', 'Jl. Garuda No. 2')
-    bk.insert('Dina Diamond', '081232425262', 'Jl. Cendrawasih No. 56')
+    bk.insert('Dina Diamond', '081232425262', 'Jl. Cendrawasih')
     bk.insert('Jessica Jade', '082313739303', 'Di sini')
     bk.insert('Silvi Shapire', '0898766789', 'Jl. Merpati A10')
 

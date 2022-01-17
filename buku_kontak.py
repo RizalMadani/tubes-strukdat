@@ -4,7 +4,7 @@ class BukuKontak:
     """
     Class yang menjadi linked list
     """
-    
+
     def __init__(self) -> None:
         self.head = None
         self.size = 0
@@ -38,10 +38,6 @@ class BukuKontak:
 
         while temp is not None:
             if getattr(temp, atribut).lower().find(yang_dicari) != -1:
-                # if result is None:
-                #     result = temp
-                # else:
-                #     result.next = temp
 
                 result.append(temp)
 
@@ -71,8 +67,8 @@ class BukuKontak:
             temp.alamat = alamat
 
         return [temp]
-   
-    
+
+
     def hapus(self, indeks):
         """
         Hapus kontak berdasarkan indeks/urutan dalam daftar
@@ -90,3 +86,5 @@ class BukuKontak:
             temp = temp.next
         
         temp.next = temp.next.next
+
+        self.size -= 1
