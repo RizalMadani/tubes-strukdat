@@ -1,6 +1,7 @@
 import re
 from buku_kontak import BukuKontak
 
+# Inisialisasi data yang diperlukan
 bk    = BukuKontak()
 LABEL = {
     'nama'   : 'Nama',
@@ -10,6 +11,10 @@ LABEL = {
 
 
 def display_menu():
+    """
+    Menampilkan daftar menu
+    """
+
     print()
     print('1. Masukan Kontak Baru')
     print('2. Tampilkan Daftar Kontak')
@@ -23,6 +28,10 @@ def display_menu():
 
 
 def buat_kontak():
+    """
+    Buat kontak baru
+    """
+
     nama   = input('> Nama : ').title()
     no     = _input_no()
     alamat = input('> Alamat (opsional)\t: ')
@@ -33,6 +42,10 @@ def buat_kontak():
 
 
 def tampilkan_semua(kontak):
+    """
+    Menampilkan semua daftar kontak
+    """
+
     if kontak is None:
         print('[!] Tidak ada kontak')
         return
@@ -48,7 +61,11 @@ def tampilkan_semua(kontak):
         i += 1
 
 
-def tampilkan(kontak, is_numbering=False):
+def tampilkan(kontak:list, is_numbering=False):
+    """
+    Menampilkan beberapa daftar kontak
+    """
+
     if kontak == []:
         print('[!] Tidak ada kontak')
         return
@@ -64,6 +81,10 @@ def tampilkan(kontak, is_numbering=False):
 
 
 def edit():
+    """
+    Edit kontak
+    """
+
     print()
     tampilkan_semua(bk.head)
     print()
@@ -95,6 +116,10 @@ def edit():
 
 
 def hapus():
+    """
+    Hapus kontak
+    """
+
     print()
     tampilkan_semua(bk.head)
     print()
@@ -129,6 +154,10 @@ def hapus():
 
 
 def cari(atribut):
+    """
+    Cari Kontak
+    """
+
     label  = LABEL[atribut]
     dicari = input(f'> {label} yang ingin dicari: ').lower()
 
