@@ -47,6 +47,7 @@ def tampilkan_semua(kontak):
         kontak = kontak.next
         i += 1
 
+
 def tampilkan(kontak, is_numbering=False):
     if kontak == []:
         print('[!] Tidak ada kontak')
@@ -91,6 +92,7 @@ def edit():
     print('\r\n[✓] Kontak berhasil diubah')
 
     tampilkan(teredit)
+
 
 def hapus():
     print()
