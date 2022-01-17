@@ -9,6 +9,7 @@ class BukuKontak:
         self.head = None
         self.size = 0
 
+
     def insert(self, nama, no='', alamat='') -> None:
         """
         Masukan kontak ke dalam buku di awal linked list
@@ -24,25 +25,6 @@ class BukuKontak:
 
         self.size += 1
 
-    # deprecated
-    def find_by_nama(self, nama_dicari):
-        """
-        Cari kontak berdasarkan nama
-        """
-
-        temp   = self.head
-        result = None
-
-        while temp is not None:
-            if temp.nama.find(nama_dicari) != -1:
-                if result is None:
-                    result = temp
-                else:
-                    result.next = temp
-
-            temp = temp.next
-
-        return result
 
     def find(self, atribut, yang_dicari):
         """
@@ -67,6 +49,7 @@ class BukuKontak:
 
         return result
 
+
     def edit(self, indeks, nama='', no='', alamat=''):
         """
         Edit kontak berdasarkan indeks/urutan dalam daftar.
@@ -88,6 +71,7 @@ class BukuKontak:
             temp.alamat = alamat
 
         return [temp]
+   
     
     def hapus(self, indeks):
         """

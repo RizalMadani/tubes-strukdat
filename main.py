@@ -91,11 +91,6 @@ def edit():
     print('\r\n[✓] Kontak berhasil diubah')
 
     tampilkan(teredit)
-    # no     = teredit.no if teredit.no != '' else '[Tidak ada No. Telp]'
-    # alamat = teredit.alamat if teredit.alamat else '[Tidak ada alamat]'
-
-    # print(f'\r\n{teredit.nama}, {no}, {alamat}')
-
 
 def hapus():
     print()
@@ -129,15 +124,6 @@ def hapus():
     bk.hapus(pilihan)
 
     print('\r\n[✓] Kontak berhasil dihapus')
-
-# deprecated
-def cari_nama():
-    nama_dicari = input('> Nama yang ingin dicari: ')
-
-    result = bk.find('nama', nama_dicari)
-
-    print(f'\r\nHasil Pencarian Kontak dengan Nama "{nama_dicari}"')
-    tampilkan(result)
 
 
 def cari(atribut):
