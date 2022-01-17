@@ -52,14 +52,16 @@ class BukuKontak:
         """
 
         temp   = self.head
-        result = None
+        result = []
 
         while temp is not None:
             if getattr(temp, atribut).lower().find(yang_dicari) != -1:
-                if result is None:
-                    result = temp
-                else:
-                    result.next = temp
+                # if result is None:
+                #     result = temp
+                # else:
+                #     result.next = temp
+
+                result.append(temp)
 
             temp = temp.next
 
@@ -85,7 +87,7 @@ class BukuKontak:
         if alamat != '':
             temp.alamat = alamat
 
-        return temp
+        return [temp]
     
     def hapus(self, indeks):
         """

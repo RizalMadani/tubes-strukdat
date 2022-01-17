@@ -32,7 +32,7 @@ def buat_kontak():
     print('\r\n[✓] Kontak berhasil ditambahkan')
 
 
-def tampilkan(kontak):
+def tampilkan_semua(kontak):
     if kontak is None:
         print('[!] Tidak ada kontak')
         return
@@ -47,10 +47,25 @@ def tampilkan(kontak):
         kontak = kontak.next
         i += 1
 
+def tampilkan(kontak, is_numbering=False):
+    if kontak == []:
+        print('[!] Tidak ada kontak')
+        return
+
+    for i in range(len(kontak)):
+        no     = kontak[i].no if kontak[i].no != '' else '[Tidak ada No. Telp]'
+        alamat = kontak[i].alamat if kontak[i].alamat else '[Tidak ada alamat]'
+
+        if is_numbering:
+            print(f'{i}. ', sep='')
+
+        print(f'{kontak[i].nama}, {no}, {alamat}')
+
 
 def edit():
     print()
-    tampilkan(bk.head)
+    tampilkan_semua(bk.head)
+    print()
 
     while(True):
         try:
@@ -75,15 +90,17 @@ def edit():
 
     print('\r\n[✓] Kontak berhasil diubah')
 
-    no     = teredit.no if teredit.no != '' else '[Tidak ada No. Telp]'
-    alamat = teredit.alamat if teredit.alamat else '[Tidak ada alamat]'
+    tampilkan(teredit)
+    # no     = teredit.no if teredit.no != '' else '[Tidak ada No. Telp]'
+    # alamat = teredit.alamat if teredit.alamat else '[Tidak ada alamat]'
 
-    print(f'\r\n{teredit.nama}, {no}, {alamat}')
+    # print(f'\r\n{teredit.nama}, {no}, {alamat}')
 
 
 def hapus():
     print()
-    tampilkan(bk.head)
+    tampilkan_semua(bk.head)
+    print()
 
     while(True):
         try:
@@ -129,7 +146,7 @@ def cari(atribut):
 
     result = bk.find(atribut, dicari)
 
-    print(f'\r\nHasil Pencarian Kontak dengan {label} "{dicari}"')
+    print(f'\r\n[i]Hasil Pencarian Kontak dengan {label} "{dicari}"\r\n')
     tampilkan(result)
 
 
@@ -150,10 +167,10 @@ def _input_no():
 
 
 if __name__ == '__main__':
-    bk.insert('Bebas', '08', 'Di sina')
-    bk.insert('Lebah', '09', 'Di situ')
-    bk.insert('Jade', '10', 'Di mana')
-    bk.insert('Shapire', '0', 'Di depan')
+    bk.insert('Amanda Amethyst', '0812344321', 'Jl. Garuda No. 2')
+    bk.insert('Dina Diamond', '081232425262', 'Jl. Cendrawasih No. 56')
+    bk.insert('Jessica Jade', '082313739303', 'Di sini')
+    bk.insert('Silvi Shapire', '0898766789', 'Jl. Merpati A10')
 
     while(True):
         display_menu()
@@ -164,8 +181,8 @@ if __name__ == '__main__':
             if pilihan == 1:
                 buat_kontak()
             elif pilihan == 2:
-                print('\r\n~~~Daftar Kontak~~~')
-                tampilkan(bk.head)
+                print('\r\n~~~ Daftar Kontak ~~~')
+                tampilkan_semua(bk.head)
             elif pilihan == 3:
                 edit()
             elif pilihan == 4:
