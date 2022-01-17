@@ -39,7 +39,10 @@ def tampilkan(kontak):
 
     i = 1
     while kontak is not None:
-        print(f'{i}. {kontak.nama}, {kontak.no}, {kontak.alamat}')
+        no     = kontak.no if kontak.no != '' else '[Tidak ada No. Telp]'
+        alamat = kontak.alamat if kontak.alamat else '[Tidak ada alamat]'
+
+        print(f'{i}. {kontak.nama}, {no}, {alamat}')
 
         kontak = kontak.next
         i += 1
@@ -71,7 +74,11 @@ def edit():
     teredit = bk.edit(pilihan, nama, no, alamat)
 
     print('\r\n[✓] Kontak berhasil diubah')
-    print(f'\r\n{teredit.nama}, {teredit.no}, {teredit.alamat}')
+
+    no     = teredit.no if teredit.no != '' else '[Tidak ada No. Telp]'
+    alamat = teredit.alamat if teredit.alamat else '[Tidak ada alamat]'
+
+    print(f'\r\n{teredit.nama}, {no}, {alamat}')
 
 
 def hapus():
@@ -136,7 +143,7 @@ def _input_no():
 
         # Cek jika no yang diinput hanya mengandung:
         # tanda + - ( ) spasi dan karakter digit
-        if re.search('^(\+(\(\d+\))*)?[\d -]{9,}[\d]$', no):
+        if no == '' or re.search('^(\+(\(\d+\))*)?[\d -]{9,}[\d]$', no):
             return no
         else:
             print('\r\n[!] No. Telp tidak valid')
@@ -146,6 +153,7 @@ if __name__ == '__main__':
     bk.insert('Bebas', '08', 'Di sina')
     bk.insert('Lebah', '09', 'Di situ')
     bk.insert('Jade', '10', 'Di mana')
+    bk.insert('Shapire', '0', 'Di depan')
 
     while(True):
         display_menu()
